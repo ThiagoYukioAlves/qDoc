@@ -1,0 +1,104 @@
+<style type="text/css">
+	@media screen and (max-width: 600px) {
+	  #form {
+	    visibility: hidden;
+  }
+}
+</style>
+
+<form id="form" onsubmit="return envio()">
+	<input id="caixa" type="text" list="guias" placeholder="Procurar guia" style="height: 80%; width: 100%">
+</form>
+
+
+<datalist id="guias">	
+	<!-- Documentos-->
+	<option value="Menu Documentos" href="http://www.qualdocumento.com.br/documentos-categorias">
+		<!--Pessoa fisica-->
+		<option value="Documentos pessoa f&iacute;sica" href="http://www.qualdocumento.com.br/documentospf">
+			<!--Menu CNH-->
+			<option value="Menu CNH" href="http://www.qualdocumento.com.br/menu-cnh">
+			<option value="Renova&ccedil;&atilde;o CNH" href="http://www.qualdocumento.com.br/renovar-cnh">
+			<option value="CNH 2a via" href="http://www.qualdocumento.com.br/cnh-segunda-via">
+			<option value="CNH definitiva" href="http://www.qualdocumento.com.br/cnh-definitiva">
+			<option value="Primeira CNH (PPD)" href="http://www.qualdocumento.com.br/primeira-cnh">
+
+			<!--Menu passaporte e visto-->
+			<option value="Como tirar Visto Americano" href="http://www.qualdocumento.com.br/visto-americano">
+			<option value="Menu Passaporte e Visto" href="http://www.qualdocumento.com.br/passaporte-e-visto">
+			<option value="Primeiro Passaporte" href="http://www.qualdocumento.com.br/como-tirar-passaporte">
+			<option value="Renova&ccedil;&atilde;o Passaporte" href="http://www.qualdocumento.com.br/passaporte-renovacao">
+
+			<!--CLT-->
+			<option value="CLT primeira via" href="http://www.qualdocumento.com.br/carteira-de-trabalho-primeira-via">
+			<option value="CLT segunda via" href="http://www.qualdocumento.com.br/carteira-de-trabalho-segunda-via">
+
+			<!--RG-->
+			<option value="RG segunda via" href="http://www.qualdocumento.com.br/rg-segunda-via">
+			<option value="RG primeira via" href="http://www.qualdocumento.com.br/rg-primeira-via">
+
+			<!--CPF-->
+			<option value="2a via CPF" href="http://www.qualdocumento.com.br/cpf-segunda-via">
+			<option value="CPF primeira via" href="http://www.qualdocumento.com.br/cpf-primeira-via">
+
+			<!--Titulo-->
+			<option value="Tirar T&iacute;tulo de Eleitor" href="http://www.qualdocumento.com.br/tirar-titulo-eleitor">
+			<option value="2a via T&iacute;tulo Eleitor" href="http://www.qualdocumento.com.br/titulo-eleitor-2a-via">
+
+	<!--Contato-->
+	<option value="Contato" href="http://www.qualdocumento.com.br/contato">
+
+	<!--Menu procedimentos-->
+	<option value="Menu Procedimentos" href="http://www.qualdocumento.com.br/ajuda-procedimentos">
+		<!--Passaporte e visto definidos em documentos-->
+		<!--Menu exercito-->
+		<option value="Guia Ex&eacute;rcito" href="http://www.qualdocumento.com.br/ajuda-exercito">
+		<option value="Alistamento Obrigat&oacute;rio" href="http://www.qualdocumento.com.br/alistamento-obrigatorio">
+		<option value="Certificado de Reservista 2a via" href="http://www.qualdocumento.com.br/certificado-reservista-2a-via">
+	
+		<!--imposto de renda-->
+		<option value="Imposto de Renda" href="http://www.qualdocumento.com.br/imposto-de-renda-guia">
+
+		<!--Menu carro-->
+		<option value="Menu carro" href="http://www.qualdocumento.com.br/carro-menu">	
+		<option value="Como pagar IPVA" href="http://www.qualdocumento.com.br/como-pagar-ipva">
+		<option value="Menu carro" href="http://www.qualdocumento.com.br/menu-isencoes">
+		<option value="Isen&ccedil;&atilde;o IPVA" href="http://www.qualdocumento.com.br/isencao-ipva">
+		<option value="Isen&ccedil;&atilde;o IPI" href="http://www.qualdocumento.com.br/isencao-ipi">
+		<option value="Emplacamento de Carro" href="http://www.qualdocumento.com.br/emplacamento-carro">
+		
+		<!--Menu casamento-->
+		<option value="Guia Div&oacute;rcio" href="http://www.qualdocumento.com.br/guia-divorcio">
+		<option value="Casamento Civil" href="http://www.qualdocumento.com.br/casamento-civil">
+</datalist>
+
+<script type="text/javascript">
+	var form = document.getElementById("form");
+	var guias = document.getElementById("guias");
+	var caixa = document.getElementById("caixa");
+
+	console.log(document.documentElement.parentNode);
+	//console.log(document.documentElement.parentNode.getAttribute('outerHTML'));
+	console.log(parent.document);
+
+	function envio(){
+		guiaEscolhido = caixa.value;
+		
+		var foundIt = 0;
+		for(var i = 0 ;  i < guias.options.length ; i++){
+			if(guias.options[i].value == guiaEscolhido){
+				foundIt = 1;
+				window.open(guias.options[i].getAttribute('href'),"_parent");
+			}
+		}
+
+		if(!foundIt){
+			caixa.value = "N\xE3o encontrado!";  
+		}
+
+		return false;
+	}
+
+</script>
+
+
